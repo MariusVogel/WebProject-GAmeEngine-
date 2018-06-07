@@ -1,8 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: janni
- * Date: 07.06.2018
- * Time: 14:59
- */
 
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
