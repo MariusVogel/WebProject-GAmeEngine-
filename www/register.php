@@ -7,9 +7,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Registrieren</title>
-    <link rel="stylesheet" href="../lib/bootstrap/css/cosmo.css">
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+
 </head>
 <body>
+<nav class="navbar navbar-collapse">
+    <ol class="nav navbar-nav">
+        <li><a href="login.php">Login</a></li>
+    </ol>
+</nav>
+
 <div class="jumbotron">
     <h1 class="h1">Registrieren</h1>
     <form method="post">
@@ -21,6 +28,7 @@
         <input type="password" name="passwort" class="form-control" id="pw1" placeholder="Passwort eingeben...">
         <label class="col-lg-2" for="pw2">Passwort wiederholen: </label>
         <input type="password" name="passwort" class="form-control" id="pw2" placeholder="Passwort wiederholen...">
+        <br/>
         <button class="btn btn-primary">Registrieren</button>
     </form>
 </div>
