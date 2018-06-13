@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="jumbotron">
-    <h1 class="h1">Regestrieren</h1>
+    <h1 class="h1">Registrieren</h1>
     <form method="post">
         <label class="col-lg-2" for="name ">Username: </label>
         <input type="text" name="username" class="form-control" id="name " placeholder="Benutzername eingeben...">
@@ -21,7 +21,7 @@
         <input type="password" name="passwort" class="form-control" id="pw1" placeholder="Passwort eingeben...">
         <label class="col-lg-2" for="pw2">Passwort wiederholen: </label>
         <input type="password" name="passwort" class="form-control" id="pw2" placeholder="Passwort wiederholen...">
-        <button class="btn btn-primary">Regestrieren</button>
+        <button class="btn btn-primary">Registrieren</button>
     </form>
 </div>
 </body>
