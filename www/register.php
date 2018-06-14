@@ -1,5 +1,5 @@
 <?php
-
+    $_POST
 ?>
 
 <!DOCTYPE html>
@@ -21,6 +21,7 @@
         <input type="password" name="passwort" class="form-control" id="pw1" placeholder="Passwort eingeben...">
         <label class="col-lg-2" for="pw2">Passwort wiederholen: </label>
         <input type="password" name="passwort" class="form-control" id="pw2" placeholder="Passwort wiederholen...">
+        <br/>
         <button class="btn btn-primary">Registrieren</button>
     </form>
 </div>
