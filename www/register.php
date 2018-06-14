@@ -1,5 +1,5 @@
 <?php
-    $_POST
+
 ?>
 
 <!DOCTYPE html>
