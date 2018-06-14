@@ -1,5 +1,5 @@
 <?php
-
+    $_POST
 ?>
 
 <!DOCTYPE html>
@@ -7,16 +7,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Registrieren</title>
-    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="../lib/bootstrap/css/cosmo.css">
 </head>
 <body>
-<nav class="navbar navbar-collapse">
-    <ol class="nav navbar-nav">
-        <li><a href="login.php">Login</a></li>
-    </ol>
-</nav>
-
 <div class="jumbotron">
     <h1 class="h1">Registrieren</h1>
     <form method="post">
