@@ -1,5 +1,9 @@
 <?php
+if (!empty($_POST)){
+    if(!empty($_POST['uname']) && !empty($_POST['pw'])){
 
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="de">
