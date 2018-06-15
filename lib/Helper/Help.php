@@ -32,4 +32,19 @@ class Help
         return '<div class="alert alert-dismissible alert-success" style="max-width: 30em">
                 <button type="button" class="close" data-dismiss="alert">&times;</button><strong>' . $text . '</strong></div>';
     }
+
+    /**
+     * prueft ob das Passwort stark genug ist
+     *
+     * @param $pw
+     * @return bool
+     */
+    public static function prufePw($pw)
+    {
+        return strlen($pw) > 7
+            && preg_match("/[a-z]/", $pw)
+            && preg_match("/[A-Z]/", $pw)
+            && preg_match("/[0-9]/", $pw)
+            && (preg_match("/[!-\/:-@]/", $pw));
+    }
 }

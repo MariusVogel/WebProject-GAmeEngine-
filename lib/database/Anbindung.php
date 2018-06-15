@@ -67,8 +67,25 @@ class Anbindung
             $stm->execute(array(
                 $benutzername
             ));
+            if($result = $stm->fetch(PDO::FETCH_ASSOC)){
+            return new User($result);
+            }
+            return false;
+        }else
+            throw new Exception("Statement klappt nicht");
+    }
 
-            return new User($stm->fetch(PDO::FETCH_ASSOC));
+    public function selectUserMail($mail){
+        $stm = "SELECT * FROM Benutzer WHERE mail = ?";
+        $stm = self::$pdo->prepare($stm);
+        if($stm){
+            $stm->execute(array(
+                $mail
+            ));
+            if($result = $stm->fetch(PDO::FETCH_ASSOC)){
+                return new User($result);
+            }
+            return false;
         }else
             throw new Exception("Statement klappt nicht");
     }
