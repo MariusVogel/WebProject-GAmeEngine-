@@ -6,8 +6,11 @@
  * Time: 14:49
  */
 
+require_once (__DIR__ . '/../../AutoLoad.php');
+
 class Anbindung
 {
+    private static $con= null;
     private static $pdo = null;
 
     private function __construct(PDO $pdo)
@@ -17,11 +20,11 @@ class Anbindung
 
     public static function Get()
     {
-        if (!self::pdo) {
-            self::$pdo = new self(new PDO('mysql:host=localhost;dbname=JumpNRun', 'dbuser', 'dbpass'));
-            return self::$pdo;
+        if (!self::$pdo) {
+            self::$con = new self(new PDO('mysql:host=localhost;dbname=JumpNRun', 'dbuser', 'dbpass'));
+            return self::$con;
         }
-        return self::$pdo;
+        return self::$con;
     }
 
     public function insertUser(User $user)
@@ -44,24 +47,25 @@ class Anbindung
 
     public function updateUser(User $user)
     {
-        $stm = ("UPDATE Benutzer SET mail = ?, pw = ?, code = ?");
+        $stm = ("UPDATE Benutzer SET mail = ?, pw = ?, code = ? WHERE benutzername = ?");
         $stm = self::$pdo->prepare($stm);
         if ($stm) {
             $stm->execute(array(
                 $user->mail,
                 $user->pw,
-                $user->code
+                $user->code,
+                $user->benutzername
             ));
         }else
             throw new Exception("Statement klappt nicht");
     }
 
-    public function selectUser($id){
-        $stm = "SELECT * FROM Benutzer WHERE id = ?";
+    public function selectUser($benutzername){
+        $stm = "SELECT * FROM Benutzer WHERE benutzername = ?";
         $stm = self::$pdo->prepare($stm);
         if($stm){
             $stm->execute(array(
-                $id
+                $benutzername
             ));
 
             return new User($stm->fetch(PDO::FETCH_ASSOC));
@@ -87,11 +91,11 @@ class Anbindung
 
     public function updateScore(Score $score)
     {
-        $stm = ("UPDATE Score SET score = ?");
+        $stm = ("UPDATE Score SET userId = ?");
         $stm = self::$pdo->prepare($stm);
         if ($stm) {
             $stm->execute(array(
-                $score->score
+                $score->userId
             ));
         }else
             throw new Exception("Statement klappt nicht");
