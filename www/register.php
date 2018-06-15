@@ -24,7 +24,7 @@ if (!empty($_POST)) {
     }
     $anbindung = Anbindung::Get();
     $user = $anbindung->selectUser(strip_tags($_POST['uname']));
-    $userMail = $anbindung->selectUserMail(strip_tags($_POST['mail']));
+    $userMail = $anbindung->selectUserMail(strip_tags($_POST['mail1']));
     if ($user || $userMail) {
         header("location: register.php?d=" . urldecode("Nutzer oder Mail schon vergeben!"));
         exit;
@@ -41,7 +41,7 @@ if (!empty($_POST)) {
     $user = new User([
         'benutzername' => strip_tags($_POST['uname']),
         'mail' => strip_tags($_POST['mail1']),
-        'pw' => password_hash(strip_tags($_POST['pw1'])),
+        'pw' => password_hash(strip_tags($_POST['pw1']), PASSWORD_BCRYPT),
         'code' => $code = $gen(6)
     ]);
     $anbindung->insertUser($user);
