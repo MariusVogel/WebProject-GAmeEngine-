@@ -2,7 +2,7 @@
 require_once(__DIR__ . '/../AutoLoad.php');
 $errStr = !empty($_REQUEST['d']) ? Help::DangerAlert($_REQUEST['d']) : "";
 if (!empty($_POST)) {
-    if (!empty($_POST['uname']) || !empty($_POST['pw'])) {
+    if (empty($_POST['uname']) || empty($_POST['pw'])) {
         header("location: login.php?d=" . urldecode("Alle Felder ausfuellen!"));
         exit;
     }
