@@ -59,6 +59,11 @@ if (!empty($_POST)) {
             <button class="btn btn-primary" type="submit">Anmelden</button>
         </fieldset>
     </form>
+    <div class="jumbotron">
+        <a href="register.php">
+            <button class="btn btn-primary">Hier registrieren</button>
+        </a>
+    </div>
 </div>
 </div>
 </body>
