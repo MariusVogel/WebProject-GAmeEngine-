@@ -1,10 +1,20 @@
 <?php
+session_start();
 require_once(__DIR__ . '/../AutoLoad.php');
 $sucStr = !empty($_REQUEST['s']) ? Help::SuccessAlert($_REQUEST['s']) : "";
-
+if (!empty($_POST)) {
+    if (!empty($_POST['code'])) {
+        $con = Anbindung::Get();
+        $user = $con->selectUser($_SESSION['uname']);
+        if ($user->code != strip_tags($_POST['code'])){
+            header("location: verify.php?d=" . urldecode("Code stimmt nicht ueberein!"));
+            exit;
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <title>Verifikation</title>
@@ -25,6 +35,16 @@ $sucStr = !empty($_REQUEST['s']) ? Help::SuccessAlert($_REQUEST['s']) : "";
 <div class="jumbotron" align="center">
     <h1 class="h1">Verfizieren</h1>
     <?php echo $sucStr; ?>
+    <form method="post">
+        <fieldset style="max-width: 30em">
+            <div class="form-group row">
+                <label class="col-form-label" for="code">Code:</label>
+                <input class="form-control" type="text" name="code" id="code"
+                       placeholder="Verifizierungscode eingeben...">
+            </div>
+            <button class="btn btn-primary" type="submit">Anmelden</button>
+        </fieldset>
+    </form>
 </div>
 </body>
 </html>
