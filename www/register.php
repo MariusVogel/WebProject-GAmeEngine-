@@ -46,6 +46,9 @@ if (!empty($_POST)) {
     ]);
     $anbindung->insertUser($user);
     mail(strip_tags($_POST['mail1']), 'Verifizierung [Spielname einfuegen]', "Ihre Regestierung ist fast abgeschlossen sie muessen nur auf der Verifikationseite folgenden Code eingeben.\n\n$code");
+    session_start(['cookie_lifetime' => 86400]);
+    $_SESSION['uname'] = $user->benutzername;
+    $_SESSION['uid'] = $user->id;
     header("location: verify.php?s=" . urldecode("Bitte geben sie den Code an den wir Ihnen per Mail geschickt haben."));
     exit;
 }

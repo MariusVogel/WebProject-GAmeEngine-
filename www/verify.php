@@ -2,6 +2,10 @@
 session_start();
 require_once(__DIR__ . '/../AutoLoad.php');
 $sucStr = !empty($_REQUEST['s']) ? Help::SuccessAlert($_REQUEST['s']) : "";
+if(!$_SESSION['uname'] || !$_SESSION['uid']){
+    header("location: login.php?d=" . urldecode("Loggen sie sich ein!"));
+    exit;
+}
 if (!empty($_POST)) {
     if (!empty($_POST['code'])) {
         $con = Anbindung::Get();
@@ -10,6 +14,13 @@ if (!empty($_POST)) {
             header("location: verify.php?d=" . urldecode("Code stimmt nicht ueberein!"));
             exit;
         }
+        $user->code=1;
+        $con->updateUser($user);
+        session_start(['cookie_lifetime' => 86400]);
+        $_SESSION['uname'] = $user->benutzername;
+        $_SESSION['uid'] = $user->id;
+        header("location: ../lib/phaser-test/TestIndex.html");
+        exit;
     }
 }
 ?>
