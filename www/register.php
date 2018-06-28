@@ -105,7 +105,7 @@ if (!empty($_POST)) {
         </fieldset>
     </form>
     <div class="jumbotron">
-        <a href="register.php">
+        <a href="login.php">
             <button class="btn btn-primary">Zur&uuml;ck zum LogIn</button>
         </a>
     </div>
