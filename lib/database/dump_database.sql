@@ -40,7 +40,7 @@ CREATE TABLE `Benutzer` (
 
 INSERT INTO `Benutzer` (`id`, `benutzername`, `mail`, `pw`, `code`) VALUES
 (2, 'jannis', 'jannis.luechtefeld@yahoo.de', '$2y$10$M3dpZnK8aHSM0S6zoT/TAOTe52EfpFX.U5VY/BO0GvgJj5SnOnClS', '1'),
-(3, 'marius', 'mariusvogel1@gmail.com', '$2y$10$nGzEpuwDNj2kMnmHjz84Fu53t0fBiVb5ih2Pz2Cv6PgJ1kX9hqYPq', 'B0gaEF');
+(3, 'marius', 'mariusvogel1@gmail.com', '$2y$10$nGzEpuwDNj2kMnmHjz84Fu53t0fBiVb5ih2Pz2Cv6PgJ1kX9hqYPq', '1');
 
 -- --------------------------------------------------------
 
