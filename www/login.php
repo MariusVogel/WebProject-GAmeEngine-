@@ -46,6 +46,7 @@ if (!empty($_POST)) {
             crossorigin="anonymous"></script>
 </head>
 <body>
+
 <div class="jumbotron" align="center">
     <h1 class="h1">Login</h1>
     <?php echo $errStr; ?>
