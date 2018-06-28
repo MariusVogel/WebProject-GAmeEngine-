@@ -19,7 +19,10 @@ if (!empty($_POST)) {
     session_start(['cookie_lifetime' => 86400]);
     $_SESSION['uname'] = $user->benutzername;
     $_SESSION['uid'] = $user->id;
-    echo "alles richtig";
+    if($user->code !== 1){
+        header("location: verify.php?s=" . urldecode("Bitte geben sie den Code an den wir Ihnen per Mail geschickt haben."));
+        exit;
+    }
     header("location: ../lib/phaser-test/TestIndex.html");
     exit;
 }
@@ -59,6 +62,11 @@ if (!empty($_POST)) {
             <button class="btn btn-primary" type="submit">Anmelden</button>
         </fieldset>
     </form>
+    <div class="jumbotron">
+        <a href="register.php">
+            <button class="btn btn-primary">Hier registrieren</button>
+        </a>
+    </div>
 </div>
 </div>
 </body>

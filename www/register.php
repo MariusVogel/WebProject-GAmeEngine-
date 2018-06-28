@@ -46,6 +46,9 @@ if (!empty($_POST)) {
     ]);
     $anbindung->insertUser($user);
     mail(strip_tags($_POST['mail1']), 'Verifizierung [Spielname einfuegen]', "Ihre Regestierung ist fast abgeschlossen sie muessen nur auf der Verifikationseite folgenden Code eingeben.\n\n$code");
+    session_start(['cookie_lifetime' => 86400]);
+    $_SESSION['uname'] = $user->benutzername;
+    $_SESSION['uid'] = $user->id;
     header("location: verify.php?s=" . urldecode("Bitte geben sie den Code an den wir Ihnen per Mail geschickt haben."));
     exit;
 }
@@ -92,6 +95,9 @@ if (!empty($_POST)) {
             <div class="form-group row">
                 <label class="col-form-label" for="pw1">Passwort</label>
                 <input type="password" name="pw1" class="form-control" id="pw1" placeholder="Passwort eingeben...">
+                <small id="pwHelp" class="form-text text-muted" align="left">min. 8 Zeichen lang<br>min. ein Großbuchstabe<br>min. ein
+                    Kleinbuchstabe<br>min. eine Zahl<br>min. ein Sonderzeichen(!,@,+,$,usw.)
+                </small>
             </div>
             <div class="form-group row">
                 <label class="col-form-label" for="pw2">Passwort(wiederholen)</label>
@@ -101,6 +107,11 @@ if (!empty($_POST)) {
             <button class="btn btn-primary">Registrieren</button>
         </fieldset>
     </form>
+    <div class="jumbotron">
+        <a href="login.php">
+            <button class="btn btn-primary">Zur&uuml;ck zum LogIn</button>
+        </a>
+    </div>
 </div>
 </body>
 </html>
