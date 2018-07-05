@@ -1,20 +1,31 @@
 <?php
 require_once(__DIR__ . '/../AutoLoad.php');
-$errStr = !empty($_REQUEST['d']) ? Help::DangerAlert($_REQUEST['d']) : "";
+$errStr = "";
+$errStr .= !empty($_REQUEST['d']) ? Help::DangerAlert($_REQUEST['d']) : "";
+$errStr .= !empty($_REQUEST['s']) ? Help::SuccessAlert($_REQUEST['s']) : "";
 if (!empty($_POST)) {
     if (empty($_POST['uname']) || empty($_POST['pw'])) {
         header("location: login.php?d=" . urldecode("Alle Felder ausfuellen!"));
         exit;
     }
-    $anbindung = Anbindung::Get();
-    $user = $anbindung->selectUser(strip_tags($_POST['uname']));
+    $con = Anbindung::Get();
+    $user = $con->selectUser(strip_tags($_POST['uname']));
     if (!$user) {
         header("location: login.php?d=" . urldecode("Keinen Benutzer unter diesen Namen gefunden!"));
         exit;
     }
-    if (!password_verify(strip_tags($_POST['pw']), $user->pw)) {
+    $einmalPw = $con->selectEinmalPw($user->id);
+    var_dump($einmalPw);
+    if (!password_verify(strip_tags($_POST['pw']), $user->pw) && !$einmalPw) {
         header("location: login.php?d=" . urldecode("Passwort ist falsch!"));
         exit;
+    }
+    if(!password_verify(strip_tags($_POST['pw']), $einmalPw->pw)){
+        header("location: login.php?d=" . urldecode("Passwort ist falsch!"));
+        exit;
+    }
+    if($einmalPw){
+        $con->deleteEinmalPw($einmalPw);
     }
     session_start(['cookie_lifetime' => 86400]);
     $_SESSION['uname'] = $user->benutzername;
@@ -66,6 +77,9 @@ if (!empty($_POST)) {
     <div class="jumbotron">
         <a href="register.php">
             <button class="btn btn-primary">Hier registrieren</button>
+        </a>
+        <a href="forgotPw.php">
+            <button class="btn btn-primary">Passwort zur&uuml;cksetzen</button>
         </a>
     </div>
 </div>
