@@ -6,11 +6,11 @@
  * Time: 14:49
  */
 
-require_once (__DIR__ . '/../../AutoLoad.php');
+require_once(__DIR__ . '/../../AutoLoad.php');
 
 class Anbindung
 {
-    private static $con= null;
+    private static $con = null;
     private static $pdo = null;
 
     private function __construct(PDO $pdo)
@@ -56,37 +56,39 @@ class Anbindung
                 $user->code,
                 $user->benutzername
             ));
-        }else
+        } else
             throw new Exception("Statement klappt nicht");
     }
 
-    public function selectUser($benutzername){
+    public function selectUser($benutzername)
+    {
         $stm = "SELECT * FROM Benutzer WHERE benutzername = ?";
         $stm = self::$pdo->prepare($stm);
-        if($stm){
+        if ($stm) {
             $stm->execute(array(
                 $benutzername
             ));
-            if($result = $stm->fetch(PDO::FETCH_ASSOC)){
-            return new User($result);
-            }
-            return false;
-        }else
-            throw new Exception("Statement klappt nicht");
-    }
-
-    public function selectUserMail($mail){
-        $stm = "SELECT * FROM Benutzer WHERE mail = ?";
-        $stm = self::$pdo->prepare($stm);
-        if($stm){
-            $stm->execute(array(
-                $mail
-            ));
-            if($result = $stm->fetch(PDO::FETCH_ASSOC)){
+            if ($result = $stm->fetch(PDO::FETCH_ASSOC)) {
                 return new User($result);
             }
             return false;
-        }else
+        } else
+            throw new Exception("Statement klappt nicht");
+    }
+
+    public function selectUserMail($mail)
+    {
+        $stm = "SELECT * FROM Benutzer WHERE mail = ?";
+        $stm = self::$pdo->prepare($stm);
+        if ($stm) {
+            $stm->execute(array(
+                $mail
+            ));
+            if ($result = $stm->fetch(PDO::FETCH_ASSOC)) {
+                return new User($result);
+            }
+            return false;
+        } else
             throw new Exception("Statement klappt nicht");
     }
 
@@ -114,35 +116,88 @@ class Anbindung
             $stm->execute(array(
                 $score->userId
             ));
-        }else
+        } else
             throw new Exception("Statement klappt nicht");
     }
 
-    public function selectScore($userid){
+    public function selectScore($userid)
+    {
         $stm = "SELECT * FROM Score WHERE userid = ?";
         $stm = self::$pdo->prepare($stm);
-        if($stm){
+        if ($stm) {
             $stm->execute(array(
                 $userid
             ));
 
             return new Score($stm->fetch(PDO::FETCH_ASSOC));
-        }else
+        } else
             throw new Exception("Statement klappt nicht");
     }
 
 
-    public function deleteUser($userid){
+    public function deleteUser($userid)
+    {
         $stm = "DELETE FROM Benutzer WHERE id = ?";
         $stm2 = "DELETE FROM Score WHERE userId = ?";
         $stm = self::$pdo->prepare($stm);
         $stm2 = self::$pdo->prepare($stm2);
-        if($stm && $stm2){
+        if ($stm && $stm2) {
             $stm->execute(array($userid));
             $stm2->execute(array($userid));
             return true;
-        }else
+        } else
             throw new Exception("Statement klappt nicht");
+    }
+
+    public function insertEinmalPw(EinmalPw $pw)
+    {
+        $stm = "INSERT INTO EinmalPw (userId, pw) VALUES (?, ?);";
+        $stm = self::$pdo->prepare($stm);
+        if ($stm) {
+            $stm->execute(array(
+                $pw->userId,
+                $pw->pw
+            ));
+        } else
+            throw new Exception("Statement klappt nicht");
+    }
+
+    public function updateEinmalPw(EinmalPw $pw)
+    {
+        $stm = "Update EinmalPw Set pw = ? WHERE userId = ?;";
+        $stm = self::$pdo->prepare($stm);
+        if ($stm) {
+            $stm->execute(array(
+                $pw->pw,
+                $pw->userId
+            ));
+        } else
+            throw new Exception("Statement klappt nicht");
+    }
+
+    public function deleteEinmalPw(EinmalPw $pw)
+    {
+        $stm = "DELETE FROM EinmalPw WHERE userId = ?;";
+        $stm = self::$pdo->prepare($stm);
+        if ($stm) {
+            $stm->execute(array($pw->userId));
+        } else
+            throw new Exception("Statement klappt nicht");
+
+    }
+
+    public function selectEinmalPw($userId)
+    {
+        $stm = "SELECT * FROM EinmalPw WHERE userId = ?;";
+        $stm = self::$pdo->prepare($stm);
+        if ($stm) {
+            $stm->execute(array($userId));
+            if ($result = $stm->fetch(PDO::FETCH_ASSOC)) {
+                return new EinmalPw($result);
+            }
+            return false;
+        } else
+            throw new Exception("Statemaent klappt nicht");
     }
 
 }
