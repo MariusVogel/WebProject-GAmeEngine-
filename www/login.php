@@ -34,7 +34,7 @@ if (!empty($_POST)) {
         header("location: verify.php?s=" . urldecode("Bitte geben sie den Code an den wir Ihnen per Mail geschickt haben."));
         exit;
     }
-    header("location: ../lib/phaser-test/TestIndex.html");
+    header("location: ../lib/phaser-test/TestIndex.php");
     exit;
 }
 ?>
@@ -57,6 +57,7 @@ if (!empty($_POST)) {
             crossorigin="anonymous"></script>
 </head>
 <body>
+
 <div class="jumbotron" align="center">
     <h1 class="h1">Login</h1>
     <?php echo $errStr; ?>
