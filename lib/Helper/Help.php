@@ -61,14 +61,11 @@ class Help
       <li class=\"nav-item active\">
         <a class=\"nav-link\" href=\"#\">Home<span class=\"sr-only\">(current)</span></a>
       </li>
-      <li class=\"nav-item\">
-        <a class=\"nav-link\" href=\"#\">Passwort ändern</a>
-      </li>
       <li class=\"nav-item\">s
         <a class=\"nav-link\" href=\"#\">Highscore</a>
       </li>
       <li class=\"nav-item\">
-        <a class=\"nav-link\" href=\"#\">Log Out</a>
+        <a class=\"nav-link\" href=\"../../www/logout.php\">Log Out</a>
       </li>
     </ul>
   </div>
