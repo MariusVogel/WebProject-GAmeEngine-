@@ -15,12 +15,7 @@ body{
 
 
 }
-#menu{
-    margin-top: 10px;
-    margin-left: 550px;
-    width: 200px;
 
-}
 .btn{
     background-image: url("src/assets/platform.png");
     border-color: #184c10;
