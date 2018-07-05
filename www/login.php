@@ -19,11 +19,11 @@ if (!empty($_POST)) {
     session_start(['cookie_lifetime' => 86400]);
     $_SESSION['uname'] = $user->benutzername;
     $_SESSION['uid'] = $user->id;
-    if($user->code !== 1){
+    if($user->code != 1){
         header("location: verify.php?s=" . urldecode("Bitte geben sie den Code an den wir Ihnen per Mail geschickt haben."));
         exit;
     }
-    header("location: ../lib/phaser-test/TestIndex.html");
+    header("location: ../lib/phaser-test/TestIndex.php");
     exit;
 }
 ?>
