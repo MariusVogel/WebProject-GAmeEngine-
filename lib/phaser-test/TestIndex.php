@@ -11,7 +11,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <script src="//cdn.jsdelivr.net/npm/phaser@3.1.1/dist/phaser.js"></script>
+    <script src="../phaser.js"></script>
+    <script src="../jquery.js"></script>
     <script src="TestGame.js"></script>
     <link rel="stylesheet" href="../bootstrap/css/cosmo.css">
     <link rel="stylesheet" href="test.css">
