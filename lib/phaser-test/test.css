@@ -1,4 +1,4 @@
-body{
+body {
     background: url("src/assets/startbild.png") no-repeat center center fixed;
 
     background-size: contain;
@@ -8,26 +8,28 @@ body{
     background-size: cover;
     background-attachment: fixed;*/
 }
-#startbutton{
-    margin-left: 550px;
-    margin-top: 275px;
-    width: 200px;
 
+#startbutton {
+    text-align: center;
+    width: 200px;
+    top: 100%;
+    margin-left: 45%;
+    margin-top: 30%;
 
 }
 
-.btn{
+.btn {
     background-image: url("src/assets/platform.png");
     border-color: #184c10;
     color: white;
 
-
-
 }
+
 .btn:hover {
-   text-decoration: none;
+    text-decoration: none;
     background-image: url("src/assets/platform.png");
 }
+
 .btn:not(:disabled):not(.disabled):active, .btn:not(:disabled):not(.disabled).active {
     background-image: url("src/assets/platform.png");
 }
