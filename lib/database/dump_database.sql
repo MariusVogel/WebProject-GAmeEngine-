@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Erstellungszeit: 21. Jun 2018 um 15:27
+-- Erstellungszeit: 10. Jul 2018 um 19:54
 -- Server-Version: 5.7.22-0ubuntu0.16.04.1
 -- PHP-Version: 7.0.30-0ubuntu0.16.04.1
 
@@ -40,7 +40,7 @@ CREATE TABLE `Benutzer` (
 
 INSERT INTO `Benutzer` (`id`, `benutzername`, `mail`, `pw`, `code`) VALUES
 (2, 'jannis', 'jannis.luechtefeld@yahoo.de', '$2y$10$M3dpZnK8aHSM0S6zoT/TAOTe52EfpFX.U5VY/BO0GvgJj5SnOnClS', '1'),
-(3, 'marius', 'mariusvogel1@gmail.com', '$2y$10$nGzEpuwDNj2kMnmHjz84Fu53t0fBiVb5ih2Pz2Cv6PgJ1kX9hqYPq', '1');
+(7, 'marius', 'mariusvogel1@gmail.com', '$2y$10$w3aG437kBGqztRE496zNWO/OIuYI7CBePOoUJwuLcwHWgTQbGuWpK', '1');
 
 -- --------------------------------------------------------
 
@@ -60,8 +60,8 @@ CREATE TABLE `Score` (
 --
 
 INSERT INTO `Score` (`id`, `userId`, `score`, `datum`) VALUES
-(1, 3, 9001, '2018-06-15 08:49:15'),
-(2, 6, 1001, '2018-06-15 08:49:15');
+(2, 2, 1001, '2018-06-15 08:49:15'),
+(4, 7, 9000, '2018-07-10 16:09:30');
 
 --
 -- Indizes der exportierten Tabellen
@@ -90,12 +90,12 @@ ALTER TABLE `Score`
 -- AUTO_INCREMENT für Tabelle `Benutzer`
 --
 ALTER TABLE `Benutzer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT für Tabelle `Score`
 --
 ALTER TABLE `Score`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

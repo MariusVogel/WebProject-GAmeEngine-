@@ -6,7 +6,7 @@
  * Time: 15:08
  */
 
-class score
+class Score
 {
  use Entity;
 

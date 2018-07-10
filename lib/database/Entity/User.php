@@ -5,7 +5,6 @@
  * Date: 14.06.18
  * Time: 15:01
  */
-require 'Entity.php';
 class User
 {
     use Entity;

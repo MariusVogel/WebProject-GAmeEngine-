@@ -16,11 +16,11 @@ if (!empty($_POST)) {
     }
     $einmalPw = $con->selectEinmalPw($user->id);
     var_dump($einmalPw);
-    if (!password_verify(strip_tags($_POST['pw']), $user->pw) && !$einmalPw) {
+    if (!password_verify(strip_tags($_POST['pw']), $user->pw)) {
         header("location: login.php?d=" . urldecode("Passwort ist falsch!"));
         exit;
     }
-    if(!password_verify(strip_tags($_POST['pw']), $einmalPw->pw)){
+    if(!password_verify(strip_tags($_POST['pw']), $einmalPw->pw) && $einmalPw ){
         header("location: login.php?d=" . urldecode("Passwort ist falsch!"));
         exit;
     }
@@ -34,7 +34,7 @@ if (!empty($_POST)) {
         header("location: verify.php?s=" . urldecode("Bitte geben sie den Code an den wir Ihnen per Mail geschickt haben."));
         exit;
     }
-    header("location: ../lib/phaser-test/TestIndex.php");
+    header("location: index.php");
     exit;
 }
 ?>

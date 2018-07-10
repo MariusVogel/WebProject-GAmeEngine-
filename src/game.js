@@ -3,8 +3,8 @@ function starteSpiel() {
     document.body.style.backgroundImage = 'none';
     var config = {
         type: Phaser.AUTO,
-        width: 1920,
-        height: 1080,
+        width: 1500,
+        height: 625,
         physics: {
             default: 'arcade',
             arcade: {
@@ -36,19 +36,19 @@ function starteSpiel() {
 
     function preload() {
         this.alive = true;
-        this.load.image('background', 'src/assets/background.png');
-        this.load.image('ground', 'src/assets/platform.png');
-        this.load.image('star', 'src/assets/star.png');
-        this.load.image('scorebar', 'src/assets/ScoreBar.png');
+        this.load.image('background', '../src/assets/background.png');
+        this.load.image('ground', '../src/assets/platform.png');
+        this.load.image('star', '../src/assets/star.png');
+        this.load.image('scorebar', '../src/assets/ScoreBar.png');
         this.load.spritesheet('dude',
-            'src/assets/dude.png',
+            '../src/assets/dude.png',
             {frameWidth: 32, frameHeight: 48}
         );
-        this.load.image('slime', 'src/assets/slime.png');
-        this.load.audio('starPick', 'src/assets/sound/Coin.ogg');
-        this.load.image('soundOn', 'src/assets/soundOn.png');
-        this.load.image('soundOff', 'src/assets/soundOFF.png');
-        this.load.audio('gameMusic', ['src/assets/music/SF.mp3', 'src/assets/music/SF.ogg']);
+        this.load.image('slime', '../src/assets/slime.png');
+        this.load.audio('starPick', '../src/assets/sound/Coin.ogg');
+        this.load.image('soundOn', '../src/assets/soundOn.png');
+        this.load.image('soundOff', '../src/assets/soundOFF.png');
+        this.load.audio('gameMusic', ['../src/assets/music/SF.mp3', '../src/assets/music/SF.ogg']);
     }
 
     function create() {
@@ -83,10 +83,10 @@ function starteSpiel() {
         player = this.physics.add.sprite(500, 500, 'dude');
 
         //Camera
-        this.cameras.main.setSize(1500, 800);
+        this.cameras.main.setSize(1600, 625);
 
-        this.cameras.main.setBounds(0, 0, 1920, 1060);
-        this.physics.world.setBounds(0, 0, 1920, 1060);
+        this.cameras.main.setBounds(0, 0, 1920, 1080);
+        this.physics.world.setBounds(0, 0, 1685, 1080);
 
         this.cameras.main.startFollow(player);
 
@@ -223,22 +223,8 @@ function starteSpiel() {
 
         music.stop();
 
-        $.post()
-        {
-            'score.php',
-                score
-        }
-        ;
-
-
-        window.alert("Game Over \nEreichte Punktzahl: " + score);
-        score = 0;
-
-        cursors.left.isDown = false;
-        cursors.right.isDown = false;
-        cursors.up.isDown = false;
-        this.scene.restart();
-
-
+        $.post("../src/score.php", {'score': score}).done(function () {
+           window.location = "highscore.php?score=" + score;
+        });
     }
 }

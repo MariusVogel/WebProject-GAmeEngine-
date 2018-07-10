@@ -1,5 +1,5 @@
 body {
-    background: url("src/assets/startbild.png") no-repeat center center fixed;
+    background: url("assets/startbild.png") no-repeat center center fixed;
 
     background-size: contain;
     -webkit-background-size: cover;
@@ -19,7 +19,7 @@ body {
 }
 
 .btn {
-    background-image: url("src/assets/platform.png");
+    background-image: url("assets/platform.png");
     border-color: #184c10;
     color: white;
 
@@ -27,10 +27,10 @@ body {
 
 .btn:hover {
     text-decoration: none;
-    background-image: url("src/assets/platform.png");
+    background-image: url("assets/platform.png");
 }
 
 .btn:not(:disabled):not(.disabled):active, .btn:not(:disabled):not(.disabled).active {
-    background-image: url("src/assets/platform.png");
+    background-image: url("assets/platform.png");
 }
 
