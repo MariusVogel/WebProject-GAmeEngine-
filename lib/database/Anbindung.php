@@ -156,7 +156,7 @@ class Anbindung
 
     public function selectAllScore()
     {
-        $stm = "SELECT * FROM Score";
+        $stm = "SELECT * FROM Score ORDER BY score DESC";
         $stm = self::$pdo->prepare($stm);
         if ($stm) {
             $stm->execute();

@@ -36,6 +36,7 @@ $uscore .= !empty($_REQUEST['score']) ? Help::SuccessAlert('Ihr erreichter Score
     echo  $uscore;
     echo Help::getHighScoreTable($scores);
     ?>
+    <a href="index.php"><button class="btn btn-danger">Restart</button></a>
 </div>
 </body>
 </html>
