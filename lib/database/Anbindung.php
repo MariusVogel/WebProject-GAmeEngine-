@@ -76,6 +76,22 @@ class Anbindung
             throw new Exception("Statement klappt nicht");
     }
 
+    public function selectUserId($id)
+    {
+        $stm = "SELECT * FROM Benutzer WHERE id = ?";
+        $stm = self::$pdo->prepare($stm);
+        if ($stm) {
+            $stm->execute(array(
+                $id
+            ));
+            if ($result = $stm->fetch(PDO::FETCH_ASSOC)) {
+                return new User($result);
+            }
+            return false;
+        } else
+            throw new Exception("Statement klappt nicht");
+    }
+
     public function selectUserMail($mail)
     {
         $stm = "SELECT * FROM Benutzer WHERE mail = ?";
@@ -110,10 +126,11 @@ class Anbindung
 
     public function updateScore(Score $score)
     {
-        $stm = ("UPDATE Score SET userId = ?");
+        $stm = ("UPDATE Score SET score = ? WHERE userId = ?");
         $stm = self::$pdo->prepare($stm);
         if ($stm) {
             $stm->execute(array(
+                $score->score,
                 $score->userId
             ));
         } else
@@ -128,8 +145,30 @@ class Anbindung
             $stm->execute(array(
                 $userid
             ));
+            if($result = $stm->fetch(PDO::FETCH_ASSOC)) {
+                return new Score($result);
+            }else
+                return false;
 
-            return new Score($stm->fetch(PDO::FETCH_ASSOC));
+        } else
+            throw new Exception("Statement klappt nicht");
+    }
+
+    public function selectAllScore()
+    {
+        $stm = "SELECT * FROM Score";
+        $stm = self::$pdo->prepare($stm);
+        if ($stm) {
+            $stm->execute();
+            if($result = $stm->fetchAll(PDO::FETCH_ASSOC)) {
+                $retArr = [];
+                foreach ($result as $score){
+                    $retArr[] = new Score($score);
+                }
+                return $retArr;
+            }else
+                return false;
+
         } else
             throw new Exception("Statement klappt nicht");
     }

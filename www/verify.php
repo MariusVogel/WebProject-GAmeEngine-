@@ -19,7 +19,7 @@ if (!empty($_POST)) {
         session_start(['cookie_lifetime' => 86400]);
         $_SESSION['uname'] = $user->benutzername;
         $_SESSION['uid'] = $user->id;
-        header("location: ../lib/phaser-test/TestIndex.php");
+        header("location: ../lib/phaser-test/index.php");
         exit;
     }
 }
