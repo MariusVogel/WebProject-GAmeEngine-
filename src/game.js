@@ -3,8 +3,8 @@ function starteSpiel() {
     document.body.style.backgroundImage = 'none';
     var config = {
         type: Phaser.AUTO,
-        width: 1500,
-        height: 625,
+        width: 1920,
+        height: 1080,
         physics: {
             default: 'arcade',
             arcade: {
@@ -28,7 +28,6 @@ function starteSpiel() {
     var stars;
     var music;
     var game = new Phaser.Game(config);
-    var mrmute;
 
     function init() {
         var canvas = this.sys.game.canvas;
@@ -61,11 +60,12 @@ function starteSpiel() {
         platforms.create(794, 1048, 'ground');
         platforms.create(1190, 1048, 'ground');
         platforms.create(1582, 1048, 'ground');
+        platforms.create(1800, 1048, 'ground');
 
         platforms.create(350, 850, 'ground');
         platforms.create(650, 850, 'ground');
-        platforms.create(1600, 850, 'ground');
         platforms.create(1200, 850, 'ground');
+        platforms.create(1600, 850, 'ground');
 
         platforms.create(950, 650, 'ground');
         platforms.create(1800, 650, 'ground');
@@ -83,10 +83,10 @@ function starteSpiel() {
         player = this.physics.add.sprite(500, 500, 'dude');
 
         //Camera
-        this.cameras.main.setSize(1600, 625);
+        this.cameras.main.setSize(1500, 800);
 
-        this.cameras.main.setBounds(0, 0, 1920, 1080);
-        this.physics.world.setBounds(0, 0, 1685, 1080);
+        this.cameras.main.setBounds(0, 0, 1920, 1060);
+        this.physics.world.setBounds(0, 0, 1920, 1060);
 
         this.cameras.main.startFollow(player);
 
