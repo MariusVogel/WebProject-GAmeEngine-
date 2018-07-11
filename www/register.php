@@ -45,7 +45,7 @@ if (!empty($_POST)) {
         'code' => $code = $gen(6)
     ]);
     $anbindung->insertUser($user);
-    mail(strip_tags($_POST['mail1']), 'Verifizierung Crazy Jump', "Ihre Regestierung ist fast abgeschlossen sie muessen nur auf der Verifikationseite folgenden Code eingeben.\n\n$code");
+    mail(strip_tags($_POST['mail1']), 'Verifizierung Slimemania', "Ihre Regestierung ist fast abgeschlossen sie muessen nur auf der Verifikationseite folgenden Code eingeben.\n\n$code");
     session_start(['cookie_lifetime' => 86400]);
     $_SESSION['uname'] = $user->benutzername;
     $_SESSION['uid'] = $user->id;
