@@ -83,7 +83,9 @@ function starteSpiel() {
         player = this.physics.add.sprite(500, 500, 'dude');
 
         //Camera
-        this.cameras.main.setSize(1500, 800);
+
+        //Nur hier die Werte anpassen wenn die Kamera zu Groß oder zu Klein ist!
+        this.cameras.main.setSize(800, 600);
 
         this.cameras.main.setBounds(0, 0, 1920, 1060);
         this.physics.world.setBounds(0, 0, 1920, 1060);
