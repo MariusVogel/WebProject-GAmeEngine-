@@ -85,7 +85,7 @@ function starteSpiel() {
         //Camera
 
         //Nur hier die Werte anpassen wenn die Kamera zu Groß oder zu Klein ist!
-        this.cameras.main.setSize(800, 600);
+        this.cameras.main.setSize(1375, 600);
 
         this.cameras.main.setBounds(0, 0, 1920, 1060);
         this.physics.world.setBounds(0, 0, 1920, 1060);
